@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  这里是进行样式穿透，将所有子组件中出现这个class的都变成这个颜色
+  /*这里是进行样式穿透，将所有子组件中出现这个class的都变成这个颜色*/
   .wrapper >>> .swiper-pagination-bullet-active
     background #fff !important
   .wrapper
