@@ -1,7 +1,8 @@
 <template>
   <div class="wrapper">
-  <swiper :options="swiperOption">
-    <swiper-slide v-for="item of swiperList" :key="item.id">
+    <!-- 用v-if进行判断，当有数据的时候才创建swiper，没有数据的时候就不创建，避免默认显示的轮播图是最后一张 -->
+  <swiper :options="swiperOption" v-if="showSwiper">
+    <swiper-slide v-for="item of list" :key="item.id">
       <img class="swiper-img" :src="item.imgUrl">
     </swiper-slide>
 
@@ -13,20 +14,22 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  // 接收组件传递的数据
+  props: {
+    list: Array
+  },
   data () {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
         // 将轮播图设置循环刷新
         loop: true
-      },
-      swiperList: [{
-        id: '0001',
-        imgUrl: 'https://imgs.qunarzz.com/p/tts3/1702/76/49276884a2bf5802.jpg_r_390x260x90_f2243d96.jpg'
-      }, {
-        id: '0002',
-        imgUrl: 'https://imgs.qunarzz.com/p/tts1/1807/72/d6d0ab92df68ff02.jpg_r_390x260x90_da3b638e.jpg'
-      }]
+      }
+    }
+  },
+  computed: {
+    showSwiper () {
+      return this.list.length
     }
   }
 }
