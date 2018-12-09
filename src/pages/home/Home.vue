@@ -3,6 +3,8 @@
     <home-header></home-header>
     <home-swiper></home-swiper>
     <home-icons> </home-icons>
+    <home-recommend></home-recommend>
+    <home-wenkend></home-wenkend>
   </div>
 </template>
 
@@ -11,6 +13,8 @@
 import HomeHeader from './components/Header'
 import HomeSwiper from './components/swiper'
 import HomeIcons from './components/Icons'
+import HomeRecommend from './components/Recommend'
+import HomeWenkend from './components/Wenkend'
 export default {
   // 组件的名字
   name: 'home',
@@ -18,6 +22,8 @@ export default {
     HomeHeader,
     HomeSwiper,
     HomeIcons,
+    HomeRecommend,
+    HomeWenkend
   }
 }
 </script>
