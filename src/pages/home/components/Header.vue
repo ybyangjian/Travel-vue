@@ -10,7 +10,12 @@
   <!-- router-link 在vue中用来替代a标签  -->
   <router-link to="/city">
     <div class="header-right">
-      {{ this.city }}
+      <!-- 这里的$store 是store目录中Index.js创建的，在mian.js中创建了根实例，所以在所有的子组件都能使用 -->
+      <!--{{ this.$store.state.city }}-->
+      <!-- 这是上面的简写，是mapState映射后的  -->
+      <!--{{ this.city }}-->
+      <!-- 重新映射为两个城市名 -->
+      {{ this.doubleCity }}
       <span class="iconfont arrow-icon">&#xe64a;</span>
     </div>
   </router-link>
@@ -18,11 +23,17 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
 export default {
   name: 'Header',
   // 接收组件传递的数据
-  props: {
-    city: String
+  // props: {
+  //   city: String
+  // }
+  computed: {
+    // mapState是将city映射到computed（组件）中
+    ...mapState(['city']),
+    ...mapGetters(['doubleCity'])
   }
 }
 </script>
@@ -51,7 +62,8 @@ export default {
     border-radius: .1rem
     color: #ccc
   .header-right
-    width: 1.24rem
+    min-width: 1.04rem
+    padding 0 .1rem
     float: right
     text-align center
     color #fff
