@@ -13,9 +13,9 @@
       <!-- 这里的$store 是store目录中Index.js创建的，在mian.js中创建了根实例，所以在所有的子组件都能使用 -->
       <!--{{ this.$store.state.city }}-->
       <!-- 这是上面的简写，是mapState映射后的  -->
-      <!--{{ this.city }}-->
+      {{ this.city }}
       <!-- 重新映射为两个城市名 -->
-      {{ this.doubleCity }}
+      <!--{{ this.doubleCity }}-->
       <span class="iconfont arrow-icon">&#xe64a;</span>
     </div>
   </router-link>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 export default {
   name: 'Header',
   // 接收组件传递的数据
@@ -32,8 +32,8 @@ export default {
   // }
   computed: {
     // mapState是将city映射到computed（组件）中
-    ...mapState(['city']),
-    ...mapGetters(['doubleCity'])
+    ...mapState(['city'])
+    // ...mapGetters(['doubleCity'])
   }
 }
 </script>
